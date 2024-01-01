@@ -1,0 +1,70 @@
+context: |
+  Requirements are fundamental to software development.
+  Requirements management tools aren't used often because they're expensive, poorly integrated with other development
+  tools, or both.
+vision: |
+  The `setms-reqs` project delivers tools for maintaining light-weight but rigorous requirements.
+  It meets developers where they are in terms of integrating into their workbench of tools and ways of working.
+  At the same time, it enforces good requirements engineering practices.
+priorities:
+  features: driver
+  quality: constraint
+  schedule: degree of freedom
+  cost: degree of freedom
+  staff: degree of freedom
+scope:
+  objectives:
+    - Increase adoption of sound requirements engineering practices
+  success:
+    - metric: Daily Active Users (DAU)
+      description: The number of users for which telemetry is reported, per work day
+  features:
+    specification:
+      description: Semi-structured files for capturing requirements
+      features:
+        index:
+          description: High-level description of project requirements.
+        feature:
+          description: Bundle of requirements.
+        functional-requirement:
+          description: Single requirement for functionality.
+        non-functional-requirement:
+          description: Single requirement for some quality attribute other than functionality.
+    glossary:
+      description: Define terms.
+    tracing:
+      description: Trace requirements to code and tests
+    telemetry:
+      description: Send usage statistics to a central server
+    plugins:
+      description: Plugins for common software development tools
+      features:
+        gradle:
+          description: Plugin for the Gradle build tool
+        intellij:
+          description: Plugin for the IntelliJ IDEA Integrated Development Environment
+personas:
+  Analyst:
+    description: Someone who defines requirements.
+    type: direct user
+    champions:
+      - Laurie
+  Developer:
+    description: Someone who builds software from requirements.
+    type: direct user
+    favored: true
+    champions:
+      - Ray
+  Provider:
+    description: The organization that provides these requirement tools.
+external-systems:
+  BuildTool:
+    description: Tool that builds software.
+    interaction: calls
+  Editor:
+    description: Tool that allows writing requirements.
+    interaction: calls
+  Test:
+    description: Tool that verifies requirements
+    interaction: calls
+    scope: test

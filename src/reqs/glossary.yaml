@@ -1,0 +1,3 @@
+- term: Specification
+  description: |
+    YAML file that contains the high-level specification of the project and that points to the detailed requirements.

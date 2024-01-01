@@ -1,0 +1,42 @@
+use-case:
+  persona: Analyst
+  functionality: a new Specification
+  benefit: I can start defining requirements
+scenarios:
+  - description: Manually create a new Specification from scratch.
+    trigger: A new project begins.
+    steps:
+      - persona: Analyst
+      - command: CreateSpecification
+      - aggregate: Specification
+      - event: SpecificationCreated
+    acceptance:
+      - given: the Specification is empty
+        when: the Specification accepts CreateSpecification
+        then: the Specification contains a file with empty context, vision, etc
+  - description: Automatically create a new Specification from scratch.
+    trigger: A new project begins.
+    steps:
+      - external-system: BuildTool
+      - command: CreateSpecification
+      - aggregate: Specification
+      - event: SpecificationCreated
+    acceptance:
+      - given: the Specification is empty
+        when: the Specification accepts CreateSpecification
+        then: the Specification contains a file with empty context, vision, etc
+  - description: Create a new Specification from an existing one.
+    trigger: A new project begins that resembles an existing project.
+    steps:
+      - persona: Analyst
+      - command: CopySpecification
+      - aggregate: Specification
+      - event: SpecificationCreated
+    acceptance:
+      - given:
+          - the Specification is empty
+          - the Specification of another project exists and contains features
+        when: the Specification accepts CopySpecification
+        then:
+          - the Specification contains a file with populated context, vision, etc.
+          - the Specification contains no features

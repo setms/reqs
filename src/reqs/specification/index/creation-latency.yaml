@@ -1,0 +1,22 @@
+objective:
+  description: Create a new Specification
+  quality-attribute: performance
+conditions:
+  - Disk with more than 1MB free space
+metrics:
+  - latency: The amount of time passed between issuing the CreateSpecification command and creation of the Specification.
+    unit: ms
+steps:
+  - external-system: Test
+  - command: CreateSpecification
+  - aggregate: Specification
+  - event: SpecificationCreated
+expected-results:
+  - metric: latency
+    operator: <=
+    threshold: 250
+    percentile: p50
+  - metric: latency
+    operator: <=
+    threshold: 1000
+    percentile: p95
