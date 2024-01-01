@@ -2,6 +2,7 @@ use-case:
   persona: Analyst
   functionality: a new Specification
   benefit: I can start defining requirements
+  description: The SRS has a defined entry point, or index, to the requirements.
 scenarios:
   - description: Manually create a new Specification from scratch.
     trigger: A new project begins.
